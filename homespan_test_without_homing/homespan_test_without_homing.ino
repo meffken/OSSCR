@@ -34,6 +34,7 @@ void setup() {
   //homeSpan.enableOTA(true, true);     // aktivate OTA funktion
   //homeSpan.enableAutoStartAP();
   //homeSpan.setPairingCode("46637726");
+  homeSpan.setLogLevel(1);
 
   homeSpan.begin(Category::WindowCoverings, "HomeSpan OSSCR");
 
@@ -48,6 +49,7 @@ void setup() {
       new DEV_curtain();
 
       new DEV_battery();
+
 }
 
 void loop() {

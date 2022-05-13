@@ -20,7 +20,6 @@ struct DEV_battery : Service::BatteryService{
     StaLowBat = new Characteristic::StatusLowBattery();
     
   } // end constructor
-
   
   //boolean update(){
   //  return(true);
