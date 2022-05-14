@@ -6,7 +6,7 @@ const byte dirPin = 21;             // pin connected to DIR pin of Easy tmc
 const byte stepPin = 19;            // pin connected to STEP pin of Easy tmc
 const byte motorEN = 23;            // motor sleep pin
 
-unsigned long posEnd = 10000;       // end position
+unsigned long posEnd = 10000;       // end position for testing set to a fixed position
 const int movement_speed = 4500;    // motor speed
 const int movement_accel = 3500;    // motor acceleration
 
@@ -25,8 +25,8 @@ struct DEV_curtain : Service::WindowCovering{
   DEV_curtain() : Service::WindowCovering(){  // constructor() method
     
     curPos = new Characteristic::CurrentPosition(0);
-    tarPos = new Characteristic::TargetPosition(0);
-    tarPos->setRange(0, 100, 10);
+    tarPos = new Characteristic::TargetPosition();
+    tarPos->setRange(0, 100, 5);
     posSta = new Characteristic::PositionState();
     //obsDet = new Characteristic::ObstructionDetected(false);
     
@@ -34,18 +34,18 @@ struct DEV_curtain : Service::WindowCovering{
 
   boolean update(){
     stepper.setMaxSpeed(movement_speed);              // set movment speed
-    stepper.setAcceleration(movement_accel);          // set acceleration
-    
-    if(tarPos->getNewVal() > curPos->getVal()){       // if the target-position requested is greater than the current-position  
-      posSta->setVal(1);
-      LOG1("Opening curtain\n");
-    } else 
-    if(tarPos->getNewVal() < curPos->getVal()){       // if the target-position requested is less than the current-position  
-      posSta->setVal(0);
-      LOG1("Closing  curtain\n");
-    }
-    
+    stepper.setAcceleration(movement_accel);          // set acceleration  
+
     if(tarPos->updated()){
+      if(tarPos->getNewVal() > curPos->getVal()){     // if the target-position requested is greater than the current-position  
+        posSta->setVal(1);
+        LOG1("Opening curtain\n");
+      } else 
+      if(tarPos->getNewVal() < curPos->getVal()){     // if the target-position requested is less than the current-position  
+        posSta->setVal(0);
+        LOG1("Closing  curtain\n");
+      }
+      
       digitalWrite(motorEN, LOW);                     // enable motor
       pos = posEnd*(tarPos->getNewVal());             // calculate new target position
       pos = pos/100;
@@ -57,9 +57,8 @@ struct DEV_curtain : Service::WindowCovering{
       curPos->setVal(pos*100/posEnd);                 // set curtain position to homekit
       posSta->setVal(0);
       
-      LOG1("The curtain is to position ");
+      LOG1("The curtain has moved to position ");
       LOG1(curPos->getVal());
-      LOG1(" driven");
       LOG1("\n");
     }
     
@@ -69,6 +68,8 @@ struct DEV_curtain : Service::WindowCovering{
 
 
 void stepper_reference_run() {
+  LOG0("\n");
   LOG0("TODO: stepper_reference_run !!!!");
+  LOG0("\n");
   stepper.setCurrentPosition(0);    // for test purpos
 }

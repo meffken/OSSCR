@@ -4,7 +4,7 @@
 
 const byte batPin = 32;             // battery analg voltage pin
 
-const int analogPinbytes = 4095;    // max read of the analogRead
+const int analogPinbytes = 4096;    // max read of the analogRead
 int batPer;                         // percentage of the battery
 
 struct DEV_battery : Service::BatteryService{
