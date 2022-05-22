@@ -4,12 +4,12 @@
 
 const byte dirPin = 21;             // pin connected to DIR pin of Easy tmc
 const byte stepPin = 19;            // pin connected to STEP pin of Easy tmc
-const byte motorEN = 23;            // motor sleep pin
+const byte motorEnPin = 23;            // motor sleep pin
+
+const int movementSpeed = 4500;    // motor speed
+const int movementAccel = 3500;    // motor acceleration
 
 unsigned long posEnd = 10000;       // end position for testing set to a fixed position
-const int movement_speed = 4500;    // motor speed
-const int movement_accel = 3500;    // motor acceleration
-
 unsigned long pos;                  // current curtain position
 
 
@@ -33,8 +33,8 @@ struct DEV_curtain : Service::WindowCovering{
   } // end constructor
 
   boolean update(){
-    stepper.setMaxSpeed(movement_speed);              // set movment speed
-    stepper.setAcceleration(movement_accel);          // set acceleration  
+    stepper.setMaxSpeed(movementSpeed);              // set movment speed
+    stepper.setAcceleration(movementAccel);          // set acceleration  
 
     if(tarPos->updated()){
       if(tarPos->getNewVal() > curPos->getVal()){     // if the target-position requested is greater than the current-position  
@@ -46,14 +46,14 @@ struct DEV_curtain : Service::WindowCovering{
         LOG1("Closing  curtain\n");
       }
       
-      digitalWrite(motorEN, LOW);                     // enable motor
+      digitalWrite(motorEnPin, LOW);                  // enable motor
       pos = posEnd*(tarPos->getNewVal());             // calculate new target position
       pos = pos/100;
 
       stepper.moveTo(pos);                            // set new target positon
       stepper.runToPosition();                        // move stepper to the new position
       
-      digitalWrite(motorEN, HIGH);                    // disable motor
+      digitalWrite(motorEnPin, HIGH);                 // disable motor
       curPos->setVal(pos*100/posEnd);                 // set curtain position to homekit
       posSta->setVal(0);
       

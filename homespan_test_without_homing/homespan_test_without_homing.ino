@@ -18,14 +18,14 @@ void setup() {
   Serial.begin(115200);
   Serial2.begin(500000);
 
-  pinMode(motorEN, OUTPUT);           // motor sleep pin
+  pinMode(motorEnPin, OUTPUT);        // motor sleep pin
   pinMode(batPin, INPUT);             // battery analg pin
   
   //digitalWrite(motorEN, HIGH);
   
-  digitalWrite(motorEN, LOW);         // enable motor
+  digitalWrite(motorEnPin, LOW);      // enable motor (current in hardware)
   stepper_reference_run();            // starts a reference run
-  digitalWrite(motorEN, HIGH);        // disable motor
+  digitalWrite(motorEnPin, HIGH);     // disable motor (current in hardware)
 
   //homeSpan.setControlPin(pin);        // set the control button
   homeSpan.setStatusPin(statusLED);   // set the status LED for HomeSpan

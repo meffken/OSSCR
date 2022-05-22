@@ -10,13 +10,13 @@ int batPer;                         // percentage of the battery
 struct DEV_battery : Service::BatteryService{
 
   SpanCharacteristic *batLev;       // uint8_t (0) (0 to 100)
-  SpanCharacteristic *chaSta;       // uint8_t (0) (0 to 2) |0=no|1=yes|2=not chargeable| ?? 2 dint work ??
+  //SpanCharacteristic *chaSta;       // uint8_t (0) (0 to 2) |0=no|1=yes|2=not chargeable| ?? 2 dint work ??
   SpanCharacteristic *StaLowBat;    // uint8_T (0) (0 to 1)
 
   DEV_battery() : Service::BatteryService(){  // constructor() method
     
     batLev = new Characteristic::BatteryLevel();
-    chaSta = new Characteristic::ChargingState(2);
+    //chaSta = new Characteristic::ChargingState(2);    // <- must be disabled for a non rechargeable battery
     StaLowBat = new Characteristic::StatusLowBattery();
     
   } // end constructor
