@@ -5,6 +5,10 @@
   )
 
   (paper "A4")
+  (title_block
+    (comment 4 "AISLER Project ID: RAMMTZQH")
+  )
+
   (layers
     (0 "F.Cu" signal)
     (31 "B.Cu" signal)
@@ -81,9 +85,9 @@
       (subtractmaskfromsilk false)
       (outputformat 1)
       (mirror false)
-      (drillshape 1)
+      (drillshape 0)
       (scaleselection 1)
-      (outputdirectory "")
+      (outputdirectory "gerber/")
     )
   )
 
@@ -474,7 +478,7 @@
     (fp_line (start -2.45 -2.35) (end -2.45 3.4) (layer "F.Fab") (width 0.1) (tstamp c2f1a42c-1262-42c7-9eaa-37461418cd27))
     (fp_line (start 0 -1.35) (end 0.625 -2.35) (layer "F.Fab") (width 0.1) (tstamp d9148dfe-803b-47d2-82bb-66b359692d27))
     (fp_line (start 9.95 -2.35) (end -2.45 -2.35) (layer "F.Fab") (width 0.1) (tstamp e8b73708-6cbe-4337-a20a-357663ac1dbb))
-    (pad "1" thru_hole roundrect (at 0 0 90) (size 1.7 1.95) (drill 0.95) (layers *.Cu *.Mask) (roundrect_rratio 0.147059)
+    (pad "1" thru_hole roundrect (at 0 0 90) (size 1.7 1.95) (drill 0.95) (layers *.Cu *.Mask) (roundrect_rratio 0.1470588235)
       (net 49 "/B2") (pinfunction "Pin_1") (pintype "passive") (tstamp 4da238b9-db66-45f1-a608-8c97df11b620))
     (pad "2" thru_hole oval (at 2.5 0 90) (size 1.7 1.95) (drill 0.95) (layers *.Cu *.Mask)
       (net 60 "/B1") (pinfunction "Pin_2") (pintype "passive") (tstamp 045c40b6-8969-452b-b367-f835abae5106))
@@ -1107,7 +1111,7 @@
     (fp_line (start -2.45 -2.35) (end -2.45 3.4) (layer "F.Fab") (width 0.1) (tstamp 9f576481-ce71-49c1-95eb-fc08a0e9ca31))
     (fp_line (start -0.625 -2.35) (end 0 -1.35) (layer "F.Fab") (width 0.1) (tstamp af9f6fec-eb6b-48dd-b30f-52b555e60904))
     (fp_line (start 0 -1.35) (end 0.625 -2.35) (layer "F.Fab") (width 0.1) (tstamp e63ffa73-9558-4a0c-9f27-4e2d81cb8ed8))
-    (pad "1" thru_hole roundrect (at 0 0 270) (size 1.7 2) (drill 1) (layers *.Cu *.Mask) (roundrect_rratio 0.147059)
+    (pad "1" thru_hole roundrect (at 0 0 270) (size 1.7 2) (drill 1) (layers *.Cu *.Mask) (roundrect_rratio 0.1470588235)
       (net 3 "GND") (pinfunction "Pin_1") (pintype "passive") (tstamp cd4ca8ff-6d84-44ad-a88d-6aaed6b93dd8))
     (pad "2" thru_hole oval (at 2.5 0 270) (size 1.7 2) (drill 1) (layers *.Cu *.Mask)
       (net 4 "/VS_input") (pinfunction "Pin_2") (pintype "passive") (tstamp 7ad307d5-752e-4535-92bf-57d50d300eaf))
@@ -1812,9 +1816,9 @@
     (fp_line (start 2.5 -1.25) (end -2.5 -1.25) (layer "B.Fab") (width 0.1) (tstamp 8db0198f-b4a1-47b9-96e7-70e0e7de0f29))
     (fp_line (start 2.5 1.25) (end 2.5 -1.25) (layer "B.Fab") (width 0.1) (tstamp e4137813-b431-4409-b65f-ab4ad4645a06))
     (fp_line (start -2.5 1.25) (end 2.5 1.25) (layer "B.Fab") (width 0.1) (tstamp ef990388-49b3-4593-a5fe-8d7221d95cf0))
-    (pad "1" smd roundrect (at -2.3125 0 90) (size 1.225 2.65) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.204082)
+    (pad "1" smd roundrect (at -2.3125 0 90) (size 1.225 2.65) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.2040816327)
       (net 57 "Net-(IC3-Pad23)") (pintype "passive") (tstamp ebf3f862-95ad-4597-867d-d4e106bafdc7))
-    (pad "2" smd roundrect (at 2.3125 0 90) (size 1.225 2.65) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.204082)
+    (pad "2" smd roundrect (at 2.3125 0 90) (size 1.225 2.65) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.2040816327)
       (net 3 "GND") (pintype "passive") (tstamp fe50a904-fec6-423a-9927-753e3b376873))
     (model "${KICAD6_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_2010_5025Metric.wrl"
       (offset (xyz 0 0 0))
@@ -2028,9 +2032,9 @@
     (fp_line (start 2.5 1.25) (end 2.5 -1.25) (layer "B.Fab") (width 0.1) (tstamp 53d04eb0-525e-4bb1-9de3-5adf53bb2e3f))
     (fp_line (start 2.5 -1.25) (end -2.5 -1.25) (layer "B.Fab") (width 0.1) (tstamp 70387768-4bb9-498d-aab2-cc1afb2c8172))
     (fp_line (start -2.5 1.25) (end 2.5 1.25) (layer "B.Fab") (width 0.1) (tstamp b95b9136-a06d-4343-8a4f-f279a94e7651))
-    (pad "1" smd roundrect (at -2.3125 0 90) (size 1.225 2.65) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.204082)
+    (pad "1" smd roundrect (at -2.3125 0 90) (size 1.225 2.65) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.2040816327)
       (net 61 "Net-(IC3-Pad27)") (pintype "passive") (tstamp 87c6d2e7-8bff-4714-8b26-8287a3fb3cf4))
-    (pad "2" smd roundrect (at 2.3125 0 90) (size 1.225 2.65) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.204082)
+    (pad "2" smd roundrect (at 2.3125 0 90) (size 1.225 2.65) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.2040816327)
       (net 3 "GND") (pintype "passive") (tstamp 0e65804d-3d45-4fba-9d68-c3ae311cab8a))
     (model "${KICAD6_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_2010_5025Metric.wrl"
       (offset (xyz 0 0 0))
